@@ -1,0 +1,39 @@
+# ---------------------------------------------------
+# Wyvern Trace - Git Ignore File
+# ---------------------------------------------------
+
+# 1. Security & API Keys (CRITICAL)
+.env
+.env.*
+*.pem
+
+# 2. Local Malware & Project Data (Docker Volume)
+# We do not want to accidentally upload real malware or 50MB JSON files to GitHub!
+workspace/uploads/*
+workspace/projects/*
+!workspace/uploads/.gitkeep
+!workspace/projects/.gitkeep
+
+# 3. Python Caches & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# 4. Streamlit & Temporary Files
+.streamlit/secrets.toml
+*.html  # Ignores the temporary Pyvis graph files if they leak into the directory
+
+# 5. IDE & OS Artifacts
+.vscode/
+Thumbs.db
+.DS_Store
+
+# 6. Java / Ghidra artifacts (just in case)
+*.class
+*.jar
+*.war
+*.nar
+*.ear
