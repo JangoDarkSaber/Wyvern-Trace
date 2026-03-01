@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  re-assistant:
+    build: .
+    container_name: ai_re_assistant
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount a local 'workspace' folder to the container
+      # This is where you will drop malware and where Ghidra will save projects
+      - ./workspace:/workspace
+      # Mount the scripts folder so Headless Ghidra can find our Java extractor
+      - ./ghidra_scripts:/app/ghidra_scripts
+    env_file:
+      - .env
+    restart: unless-stopped
